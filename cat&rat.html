@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Rat = function (name, weight, status) {
+        this.name = name;
+        this.weight = weight;
+        this.status = status;
+
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.speedRat = function () {
+            return Math.floor(Math.random() * 10);
+        };
+        this.getStatus = function () {
+            if (this.status) {
+                alert('Live');
+            } else {
+                alert('Die');
+            }
+        };
+        this.sayRat = function () {
+            return alert('chit chit');
+        };
+    };
+
+    let Cat = function (name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+
+        this.setName = function (name) {
+            this.name = name;
+        };
+        this.getName = function () {
+            return this.name;
+        };
+        this.setWeight = function (weight) {
+            this.weight = weight;
+        };
+        this.getWeight = function () {
+            return this.weight;
+        };
+        this.setSpeed = function (speed) {
+            this.speed = speed;
+        };
+        this.getSpeed = function () {
+            return this.speed;
+        };
+        this.sayCat = function () {
+            return alert('meo meo');
+        };
+        this.actCat = function (checkRat) {
+            if (checkRat.status && this.speed > checkRat.speedRat()) {
+                alert('Bat duoc roi');
+                this.weight += checkRat.setWeight(weight);
+                checkRat.status = false;
+            } else if (this.speed <= checkRat.speedRat()) {
+                alert('Ko bat duoc');
+            } else {
+                alert('Chuot chet roi');
+            }
+
+        };
+    };
+
+
+    let rat1 = new Rat('Chuot 1', 4, true);
+    let rat2 = new Rat('Chuot 2', 5, true);
+    let rat3 = new Rat('Chuot 3', 3, true);
+    let cat1 = new Cat('Meo', 15, 7);
+    console.log(rat1.speedRat());
+    console.log(cat1.getSpeed());
+
+    // document.write(rat1.getName()+" "+rat1.getWeight()+" "+rat1.speedRat()+""+rat1.sayRat());
+    // document.write(rat2.getName()+rat2.getWeight()+rat2.speedRat()+rat2.sayRat());
+    // document.write(rat3.getName()+rat3.getWeight()+rat3.speedRat()+rat3.sayRat());
+    // document.write(cat1.name+cat1.weight+cat1.speed);
+    cat1.actCat(rat1);
+    // cat1.actCat(rat2);
+    // cat1.actCat(rat3);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile</title>
+</head>
+<body>
+<script>
+    let Mobile = function () {
+        this.battery = 0;
+        this.message = [];
+        this.inbox = [];
+        this.sent = [];
+        this.status = status;
+
+
+        this.getBattery = function () {
+            return this.battery;
+        };
+        this.getMessage = function () {
+            return this.message;
+        };
+        this.getInbox = function () {
+            return this.inbox;
+        };
+        this.getSent = function () {
+            return this.sent;
+        };
+
+
+        this.battery1 = function () {
+
+            if (this.battery < 100) {
+                this.battery += 10;
+                this.status = true;
+
+            } else {
+                this.status = true;
+                alert('pin day');
+            }
+        };
+        this.message1 = function () {
+            if (this.status) {
+                let text = prompt('ND:');
+                this.message.push(text);
+                this.battery -= 1;
+            } else alert('OFF');
+        };
+        this.inbox1 = function () {
+            if (this.status) {
+                return this.inbox;
+                this.battery -= 1;
+            } else alert('OFF');
+        };
+        this.sent1 = function (person) {
+            if (this.status) {
+                person.inbox = this.message;
+                this.sent.push(this.message);
+                this.battery -= 1;
+            } else alert('OFF');
+        };
+        this.powerOnOf = function () {
+            if (this.status) {
+                this.status = false;
+            } else {
+                this.status = true;
+            }
+        }
+
+    };
+
+    let samsung = new Mobile({
+        battery: 45,
+        message: ['i love you'],
+        status: true,
+    });
+    console.log(samsung.battery);
+    console.log(samsung.message);
+    console.log(samsung.status);
+    samsung.battery1();
+    samsung.sent1();
+
+    let iphone = new Mobile({
+        battery: 45,
+        message: ['i hate you'],
+        status: true
+    });
+    iphone.battery1();
+    console.log(iphone.inbox());
+
+    // console.log(samsung.status=false);
+    // console.log(iphone.status=false);
+    // samsung.battery1();
+    // iphone.battery1();
+    // console.log(samsung.battery);
+    // console.log(iphone.battery);
+    // samsung.message1();
+    // console.log(samsung.battery);
+    // samsung.sent1(iphone);
+    // console.log(samsung.battery);
+    // iphone.inbox1();
+    // console.log(iphone.inbox);
+
+</script>
+</body>
+</html>

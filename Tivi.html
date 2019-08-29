@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Remote = function (model, modelTivi) {
+        this.model = model;
+        this.modelTivi = modelTivi;
+
+        this.channel = function (channel) {
+            this.modelTivi.channel = channel;
+        };
+        this.volume = function (volume) {
+            this.modelTivi.volume = volume;
+        };
+        this.turnOff = function () {
+            this.modelTivi.turnOff();
+        };
+        this.turnOn = function () {
+            this.modelTivi.turnOn();
+        };
+    };
+
+    let Tivi = function (channel, volume, status) {
+        this.channel = channel;
+        this.volume = volume;
+        this.status = status;
+
+        this.getChannel = function () {
+            return this.channel;
+        };
+        this.getVolume = function () {
+            return this.volume;
+        };
+        this.turnOn = function () {
+            this.status = true;
+        };
+        this.turnOff = function () {
+            this.status = false;
+        };
+    };
+
+
+    let samsung = new Tivi(1, 23, false);
+    let remote = new Remote('SS', samsung);
+
+    remote.turnOn();
+    remote.channel(7);
+    remote.volume(50);
+    remote.turnOff();
+    console.log(samsung.getChannel());
+    console.log(samsung.status);
+    console.log(samsung.getVolume());
+
+</script>
+</body>
+</html>

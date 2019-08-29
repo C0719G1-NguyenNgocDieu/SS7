@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle</title>
+</head>
+<body>
+
+<p><span id="page"></span></p>
+<canvas id="myCanvas" width="500" height="500" style="border: solid 1px"></canvas>
+
+<script>
+    let Rectangle = function (length, width) {
+        this.length = length;
+        this.width = width;
+
+        this.getLength = function () {
+            return this.length;
+        };
+
+        this.getWidth = function () {
+            return this.width;
+        };
+
+        this.setLength = function (length) {
+            this.length = length;
+        };
+
+        this.setWidth = function (width) {
+            this.width = width;
+        };
+
+        this.primeter = function () {
+            return (this.length + this.width) * 2;
+        };
+
+        this.acreage = function () {
+            return this.length * this.width;
+        };
+
+    };
+
+    let rectangle = new Rectangle();
+    rectangle.length = 200;
+    // console.log(rectangle.length);
+    rectangle.setWidth(100);
+    // console.log(rectangle.width);
+    let dai = rectangle.getLength();
+    let rong = rectangle.getWidth();
+    let chuvi = rectangle.primeter();
+    let dientich = rectangle.acreage();
+    document.getElementById('page').innerHTML = 'Hinh chu nhat co chieu dai :' + dai + ', rong: ' + rong + '. Chu vi: ' + chuvi + '. Dien tich: ' + dientich;
+
+    function createRectangle() {
+        let drawRectanglle = new Rectangle(200, 100);
+        let x = drawRectanglle.length;
+        let y = drawRectanglle.width;
+        let c = document.getElementById('myCanvas');
+        let ctx = c.getContext("2d");
+
+        ctx.moveTo(0, 0);
+        ctx.lineTo(x, 0);
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, y);
+        ctx.moveTo(x, y);
+        ctx.lineTo(0, y);
+        ctx.moveTo(0, y);
+        ctx.lineTo(0, 0);
+        ctx.stroke();
+    }
+
+    createRectangle();
+
+</script>
+
+</body>
+</html>

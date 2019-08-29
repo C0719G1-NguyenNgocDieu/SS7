@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<h1>
+    Quản lý sản phẩm.
+</h1>
+<hr>
+<hr>
+<input id="input" style="width: 400px" placeholder="Nhập sản phẩm">
+<button onclick="products.productAdd()">Thêm</button>
+<p></p>
+<table border="4">
+    <tr>
+        <td width="50px">STT</td>
+        <td width="300px">Tên sản phẩm</td>
+    </tr>
+
+</table>
+<p id="table"></p>
+<script>
+    // variable
+    let Products = function (name,amount,value) {
+
+        this.name = name;
+        this.amount=amount;
+        this.value=value;
+
+        this.setProductName = function () {
+            this.name.push(this.amount);
+        };
+        this.getProductName = function () {
+            return this.name;
+        };
+        this.setProductAmount=function (amount) {
+            this.amount.push(amount);
+        };
+        this.getProductAmount=function () {
+            return this.amount;
+        };
+
+
+        this.productShow = function () {
+
+            let data = '';
+            data += '<table>';
+            for (let i = 0; i < this.name.length; i++) {
+                data += '<tr><td width="50px">' + (i + 1) + '</td>' +
+                    '<td width="50px"><input id="' + i + '-name' + '" value="' + this.name + '" disabled></td>' +
+                    '<td width="50px"><input id="' + i + '-amount' + '" value="' + this.name[i].amount + '" disabled></td>' +
+                    '<td width="50px"><input id="' + i + '-value' + '" value="' + this.name[i].value + '" disabled></td>' +
+                    '<td width="50px"><button onclick="products.productEdit(this)" id="' + i + '-edit' + '">Chỉnh sửa</button></td>' +
+                    '<td width="50px"><button onclick="products.productDelete(this)" id="' + i + '-delete' + '">Xóa</button></td><tr>';
+            }
+            data += '<table>';
+            document.getElementById('table').innerHTML = data;
+        };
+        this.productAdd = function () {
+            this.name.push(document.getElementById('input').value);
+            document.getElementById('input').value = '';
+            this.productShow();
+        };
+        this.productEdit = function (edit) {
+            edit.id.split('-');
+            if (document.getElementById(edit.id[0] + '-name').disabled == true) {
+                document.getElementById(edit.id[0] + '-name').disabled = false;
+            } else {
+                document.getElementById(edit.id[0] + '-name').disabled = true;
+            }
+            let value = document.getElementById(edit.id[0] + '-name').value;
+            this.name[edit.id[0]] = value;
+        };
+        this.productDelete = function (del) {
+            del.id.split('-');
+            if (confirm('Ban co muon xoa')) {
+                this.name.splice(del.id[0], 1);
+            }
+            this.productShow();
+        };
+
+    };
+    var products = new Array(); // khai bao mang doi tuong
+    let products[0] = new Products(name,amount,value); //tao 1 doi tuong cho phan tu thu 1 cua mang;
+
+     products.setProductAmount('dsad');console.log(products.getProductAmount());
+</script>
+</body>
+</html>
